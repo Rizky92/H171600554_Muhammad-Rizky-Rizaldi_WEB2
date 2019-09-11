@@ -48,12 +48,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="captcha_input" class="col-md-4 col-form-label text-md-right">{{ __('') }}</label>
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('') }}</label>
 
                             <div class="col-md-6">
-                                <input id="captcha_input" type="text" class="form-control @error('captcha_input') is-invalid @enderror" name="captcha_input">
+                                <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" name="captcha">
 
-                                @error('captcha_input')
+                                @error('captcha')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
