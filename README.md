@@ -12,9 +12,10 @@ Commit 11 September 2019
 
 # Notes
 Commit #e7484dd butuh perubahan pada file berikut:
-    \vendor\laravel\framework\src\Illuminate\Foundation\Auth\AuthenticatesUsers.php
+    `\vendor\laravel\framework\src\Illuminate\Foundation\Auth\AuthenticatesUsers.php`
 
 - baris #65:
+```
     protected function validateLogin(Request $request)
     {
         $request->validate([
@@ -23,6 +24,9 @@ Commit #e7484dd butuh perubahan pada file berikut:
             'captcha' => 'required|captcha',
         ]);
     }
+```
 
-- baris #147
+- baris #147:
+    ```
     return 'telp';
+    ```
