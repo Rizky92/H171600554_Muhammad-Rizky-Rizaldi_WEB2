@@ -11,4 +11,4 @@ Commit 11 September 2019
 - 23:42 #e7484dd: Captcha pada Login & Register selesai
 
 Commit 12 September 2019
-- 07:00 #dc13afa: Tugas2 Login sudah fixed
+- 07:00 #dc13afa: Tugas2 Login & Register sudah fixed
