@@ -4,9 +4,9 @@ return [
     'characters' => ['2', '3', '4', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'm', 'n', 'p', 'q', 'r', 't', 'u', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'M', 'N', 'P', 'Q', 'R', 'T', 'U', 'X', 'Y', 'Z'],
     'default' => [
         'length' => 6,
-        'width' => 150,
-        'height' => 50,
-        'quality' => 90,
+        'width' => 200,
+        'height' => 38,
+        'quality' => 85,
         'math' => false,
     ],
     'math' => [
