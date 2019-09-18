@@ -12,3 +12,6 @@ Commit 11 September 2019
 
 Commit 12 September 2019
 - 07:00 #dc13afa: Tugas2 Login & Register sudah fixed
+
+# Notice!
+Seluruh perubahan akan disubmit ke branch "alpha". Perubahan yang bersifat final akan merge ke branch "Master".
