@@ -28,6 +28,6 @@ class HomeController extends Controller
 
     public function refreshCaptcha()
     {
-        return view('captcha');
+        return response()->json(['captcha' => captcha_img()]);
     }
 }

@@ -18,7 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/refresh-captcha', 'HomeController@refreshCaptcha')->name('refresh-captcha');
+Route::get('/refresh-captch2', function () {
+    return Captcha::create();
+})->name('refresh-captch2');
+Route::get('/refresh-captcha', 'HomeController@refreshCaptcha');
 
 Route::any('captcha-test', function() {
     if (request()->getMethod() == 'POST') {

@@ -39,6 +39,7 @@
                             </div>
                         </div>
 
+                        <!-- TODO: Refresh Captcha here without refreshing page-->
                         <div class="form-group row">
                             <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('Captcha') }}</label>
 
@@ -47,8 +48,8 @@
                             </div>
 
                             <div class="col-md-2">
-                                <button class="btn btn-secondary">
-                                    {{ __('refresh') }}
+                                <button class="btn btn-success btn-refresh" name="captcha">
+                                    {{ __('Refresh') }}
                                 </button>
                             </div>
                         </div>
