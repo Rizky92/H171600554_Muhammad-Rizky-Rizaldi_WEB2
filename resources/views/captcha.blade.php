@@ -1,3 +1,3 @@
 <div class="col-md-4">
-    {!! Captcha::img() !!}
+    <img src="{{ captcha_src() }}" alt="captcha" class="captcha" data-refresh-config="default">
 </div>

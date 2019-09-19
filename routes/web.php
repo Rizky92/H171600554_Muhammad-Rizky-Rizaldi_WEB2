@@ -18,10 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/refresh-captch2', function () {
+Route::get('/refresh-captcha2', function () {
     return Captcha::create();
-})->name('refresh-captch2');
-Route::get('/refresh-captcha', 'HomeController@refreshCaptcha');
+})->name('refresh-captcha2');
+Route::get('/refresh-captcha', 'HomeController@refreshCaptcha')->name('refresh-captcha');
+Route::get('/refresh-captcha3/{config?}', function (\Mews\Captcha\Captcha $captcha, $config = 'default') {
+    return $captcha->src($config);
+})->name('refresh-captcha3');
 
 Route::any('captcha-test', function() {
     if (request()->getMethod() == 'POST') {

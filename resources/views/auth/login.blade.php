@@ -43,14 +43,12 @@
                         <div class="form-group row">
                             <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('Captcha') }}</label>
 
-                            <div class="col-md-4">
-                                {!! Captcha::img() !!}
-                            </div>
+                            <img src="{{ route('refresh-captcha2') }}" alt="captcha" class="col-md-4" data-refresh-config="default">
 
                             <div class="col-md-2">
-                                <button class="btn btn-success btn-refresh" name="captcha">
+                                <a class="btn btn-link" name="captcha" href="{{ route('refresh-captcha') }}">
                                     {{ __('Refresh') }}
-                                </button>
+                                </a>
                             </div>
                         </div>
 
@@ -97,9 +95,8 @@
         </div>
     </div>
 </div>
+
 @endsection
-
-
 
 
 
