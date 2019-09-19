@@ -13,5 +13,10 @@ Commit 11 September 2019
 Commit 12 September 2019
 - 07:00 #dc13afa: Tugas2 Login & Register sudah fixed
 
-# Notice!
-Seluruh perubahan akan disubmit ke branch "alpha". Perubahan yang bersifat final akan merge ke branch "Master".
+Commit 18 September 2019
+- 16:06 #f75948a: Tugas3 test Captcha refresh
+
+Commit 19 September 2019
+- 04:27 #333a592: Tugas3 Migration files
+- 04:27 #52e19a4: Tugas3 test Captcha refresh #2
+- 10:26 #ad7c77e: Tugas3 Captcha refresh fixed (Ver1)
