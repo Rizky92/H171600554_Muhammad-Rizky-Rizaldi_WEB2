@@ -39,18 +39,21 @@
                             </div>
                         </div>
 
+                        <!-- TODO: Refresh Captcha here without refreshing page-->
                         <div class="form-group row">
-                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('CAPTCHA') }}</label>
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('Captcha') }}</label>
 
-                            <div class="col-md-6">
-                                {!! Captcha::img() !!}
+                            <img src="{{ route('refresh-captcha2') }}" alt="captcha" class="col-md-4" data-refresh-config="default">
+
+                            <div class="col-md-2">
+                                <a class="btn btn-link" name="captcha" href="{{ route('refresh-captcha') }}">
+                                    {{ __('Refresh') }}
+                                </a>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('') }}</label>
-
-                            <div class="col-md-6">
+                            <div class="offset-md-4 col-md-6">
                                 <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" name="captcha">
 
                                 @error('captcha')
@@ -92,4 +95,22 @@
         </div>
     </div>
 </div>
+
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

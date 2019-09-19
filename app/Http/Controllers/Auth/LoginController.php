@@ -43,11 +43,6 @@ class LoginController extends Controller
         return 'telp';
     }
 
-    protected function credentials(Request $request)
-    {
-        return $request->only($this->username(), 'password');
-    }
-
     protected function validateLogin(Request $request)
     {
         $request->validate([
@@ -57,3 +52,5 @@ class LoginController extends Controller
         ]);
     }
 }
+
+// TODO: Refresh Captcha without refreshing page
