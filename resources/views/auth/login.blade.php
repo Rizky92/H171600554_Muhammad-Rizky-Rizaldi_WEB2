@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" />
 
 @extends('layouts.app')
 
@@ -108,8 +108,8 @@
             $.ajax({
                 method: 'GET',
                 url: '/refresh-captcha',
-            }).done(function (a) {
-                $('#captcha_img').attr('src', a);
+            }).done(function (img) {
+                $('#captcha_img').attr('src', img);
             });
         });
     });

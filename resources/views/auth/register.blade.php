@@ -1,3 +1,5 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" />
+
 @extends('layouts.app')
 
 @section('content')
@@ -76,10 +78,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('CAPTCHA') }}</label>
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('Captcha') }}</label>
 
-                            <div class="col-md-6">
-                                {!! Captcha::img() !!}
+                            <div class="col-md-4">
+                                <img src="{{ captcha_src() }}" alt="captcha" id="captcha_img">
+                            </div>
+
+                            <div class="col-md-2">
+                                <a href="javascript:void(0)" class="btn btn-link" id="captcha_refresh">
+                                    {{ __('Refresh') }}
+                                </a>
                             </div>
                         </div>
 
@@ -110,4 +118,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function() {
+        $('#captcha_refresh').click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                method: 'GET',
+                url: '/refresh-captcha',
+            }).done(function (img) {
+                $('#captcha_img').attr('src', img);
+            });
+        });
+    });
+</script>
+
 @endsection

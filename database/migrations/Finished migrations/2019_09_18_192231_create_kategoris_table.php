@@ -28,8 +28,9 @@ class CreateKategorisTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(Blueprint $table)
     {
+        $table->dropForeign('user_id');
         Schema::dropIfExists('kategoris');
     }
 }
