@@ -12,7 +12,11 @@
                         @csrf
 
                         <div class="form-group row">
-                            <table>
+                            <a class="btn btn-primary" href="localhost:8000/artikel/create">Add new data</a>
+                        </div>
+
+                        <div class="form-group row">
+                            <table class="table table-striped">
                                 <tr>
                                     <th>ID</th>
                                     <th>Judul</th>
@@ -20,6 +24,7 @@
                                     <th>Waktu Publikasi</th>
                                     <th>ID User</th>
                                     <th>ID Kategori</th>
+                                    <th>Action</th>
                                 </tr>
                                 @foreach($artikel as $item)
                                     <tr>
@@ -29,6 +34,7 @@
                                         <td>{{ $item->created_at }}</td>
                                         <td>{{ $item->users_id }}</td>
                                         <td>{{ $item->kategori_artikel_id }}</td>
+                                        <td><a class="btn btn-sm btn-primary" href="{{ route('artikel.show', $item->id)}}">View</a></td>
                                     </tr>
                                 @endforeach
                             </table>
