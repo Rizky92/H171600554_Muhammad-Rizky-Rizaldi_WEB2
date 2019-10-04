@@ -8,4 +8,9 @@ class kategori_berita extends Model
 {
     protected $fillable = ['nama', 'users_id'];
     protected $table = 'kategori_berita';
+
+    public function users()
+    {
+        return $this->belongsTo('App\user');
+    }
 }

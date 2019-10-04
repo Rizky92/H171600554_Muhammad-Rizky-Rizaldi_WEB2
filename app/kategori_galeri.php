@@ -8,4 +8,9 @@ class kategori_galeri extends Model
 {
     protected $fillable = ['nama', 'users_id'];
     protected $table = 'kategori_galeri';
+
+    public function users()
+    {
+        return $this->belongsTo('App\user');
+    }
 }
