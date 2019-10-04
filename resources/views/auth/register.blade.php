@@ -121,12 +121,12 @@
 
 <script>
     $(function() {
-        $('#captcha_refresh').click(function (e) {
+        $('#captcha_refresh').click(function(e) {
             e.preventDefault();
             $.ajax({
                 method: 'GET',
                 url: '/refresh-captcha',
-            }).done(function (img) {
+            }).done(function(img) {
                 $('#captcha_img').attr('src', img);
             });
         });

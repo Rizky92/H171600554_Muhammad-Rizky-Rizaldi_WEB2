@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\artikel;
+use App\kategori_artikel;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
@@ -26,7 +27,9 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        //
+        $kategori_artikel = kategori_artikel::pluck('nama', 'id');
+
+        return view('artikel.create')->with('kategori_artikel', $kategori_artikel);
     }
 
     /**
@@ -37,7 +40,11 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        artikel::create($input);
+
+        return redirect(route('artikel.index'));
     }
 
     /**
@@ -46,9 +53,12 @@ class ArtikelController extends Controller
      * @param  \App\artikel  $artikel
      * @return \Illuminate\Http\Response
      */
-    public function show(artikel $artikel)
+
+    public function show($id)
     {
-        //
+        $artikel = artikel::find($id);
+
+        return view('artikel.show', compact('artikel'));
     }
 
     /**
