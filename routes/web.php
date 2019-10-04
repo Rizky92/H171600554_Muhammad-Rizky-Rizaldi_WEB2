@@ -25,12 +25,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::resource('kategori', 'KategoriController');
 
-Route::resource('kategori_artikel', 'KategoriArtikelController');
-Route::resource('kategori_berita', 'KategoriBeritaController');
-Route::resource('kategori_galeri', 'KategoriGaleriController');
-Route::resource('kategori_pengumuman', 'KategoriPengumumanController');
+Route::resource('/kategori_artikel', 'KategoriArtikelController');
+Route::resource('/kategori_berita', 'KategoriBeritaController');
+Route::resource('/kategori_galeri', 'KategoriGaleriController');
+Route::resource('/kategori_pengumuman', 'KategoriPengumumanController');
 
-Route::resource('artikel', 'ArtikelController');
-Route::resource('berita', 'BeritaController');
-Route::resource('galeri', 'GaleriController');
-Route::resource('pengumuman', 'PengumumanController');
+Route::resource('/artikel', 'ArtikelController');
+Route::resource('/berita', 'BeritaController');
+Route::resource('/galeri', 'GaleriController');
+Route::resource('/pengumuman', 'PengumumanController');
