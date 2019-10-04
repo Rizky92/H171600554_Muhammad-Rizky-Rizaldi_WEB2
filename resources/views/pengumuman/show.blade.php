@@ -5,39 +5,39 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Show an Article') }}</div>
+                <div class="card-header">{{ __('Show an Announcement') }}</div>
 
                 <div class="card-body">
                     @csrf
 
                     <div class="form-group row">
                         <label for="judul" class="col-md-3 col-form-label text-md-right">Category</label>
-                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->kategori_artikel->nama }}</label>
+                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $pengumuman->kategori_pengumuman->nama }}</label>
                     </div>
 
                     <div class="form-group row">
                         <label for="judul" class="col-md-3 col-form-label text-md-right">Title</label>
-                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->judul }}</label>
+                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $pengumuman->judul }}</label>
                     </div>
 
                     <div class="form-group row">
                         <label for="judul" class="col-md-3 col-form-label text-md-right">Content</label>
-                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->isi }}</label>
+                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $pengumuman->isi }}</label>
                     </div>
 
                     <div class="form-group row">
                         <label for="judul" class="col-md-3 col-form-label text-md-right">Created At</label>
-                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->created_at }}</label>
+                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $pengumuman->created_at }}</label>
                     </div>
 
                     <div class="form-group row">
                         <label for="judul" class="col-md-3 col-form-label text-md-right">Last Updated</label>
-                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->updated_at }}</label>
+                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $pengumuman->updated_at }}</label>
                     </div>
 
                     <div class="form-group row">
                         <label for="judul" class="col-md-3 col-form-label text-md-right">Publisher</label>
-                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->users->name }}</label>
+                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $pengumuman->users->name }}</label>
                     </div>
 
                     <div class="form-group row mb-0">

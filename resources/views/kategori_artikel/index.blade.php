@@ -1,5 +1,3 @@
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -7,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Kategori Artikel') }}</div>
+                <div class="card-header">{{ __('Article Category') }}</div>
 
                 <div class="card-body">
                     <form>
@@ -18,13 +16,15 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nama</th>
-                                    <th>ID User</th>
+                                    <th>User</th>
+                                    <th>Action</th>
                                 </tr>
                                 @foreach($kategori_artikel as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->users_id }}</td>
+                                        <td>{{ $item->users->name }}</td>
+                                        <td><a class="btn btn-sm btn-primary" href="{{ route('kategori_artikel.show', $item->id)}}">View</a></td>
                                     </tr>
                                 @endforeach
                             </table>
