@@ -26,7 +26,7 @@ class KategoriBeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori_berita.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class KategoriBeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        kategori_berita::create($input);
+
+        return redirect(route('kategori_berita.index'));
     }
 
     /**
@@ -46,9 +50,11 @@ class KategoriBeritaController extends Controller
      * @param  \App\kategori_berita  $kategori_berita
      * @return \Illuminate\Http\Response
      */
-    public function show(kategori_berita $kategori_berita)
+    public function show($id)
     {
-        //
+        $kategori_berita = kategori_berita::find($id);
+
+        return view('kategori_berita.show', compact('kategori_berita'));
     }
 
     /**

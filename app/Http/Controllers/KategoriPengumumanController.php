@@ -26,7 +26,7 @@ class KategoriPengumumanController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori_pengumuman.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class KategoriPengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        kategori_pengumuman::create($input);
+
+        return redirect(route('kategori_pengumuman.index'));
     }
 
     /**
@@ -46,9 +50,11 @@ class KategoriPengumumanController extends Controller
      * @param  \App\kategori_pengumuman  $kategori_pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function show(kategori_pengumuman $kategori_pengumuman)
+    public function show($id)
     {
-        //
+        $kategori_pengumuman = kategori_pengumuman::find($id);
+
+        return view('kategori_pengumuman.show', compact('kategori_pengumuman'));
     }
 
     /**

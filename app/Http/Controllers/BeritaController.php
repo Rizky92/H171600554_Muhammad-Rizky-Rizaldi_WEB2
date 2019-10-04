@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\berita;
+use App\kategori_berita;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller
@@ -26,7 +27,9 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        $kategori_berita = kategori_berita::pluck('nama', 'id');
+
+        return view('berita.create')->with('kategori_berita', $kategori_berita);
     }
 
     /**
@@ -37,7 +40,11 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        berita::create($input);
+
+        return redirect(route('berita.index'));
     }
 
     /**
@@ -46,9 +53,11 @@ class BeritaController extends Controller
      * @param  \App\berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(berita $berita)
+    public function show($id)
     {
-        //
+        $berita = berita::find($id);
+
+        return view('berita.show', compact('berita'));
     }
 
     /**
