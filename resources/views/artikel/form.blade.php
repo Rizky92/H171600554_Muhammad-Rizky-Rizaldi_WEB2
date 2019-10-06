@@ -1,50 +1,38 @@
 @csrf
 <div class="form-group row">
-    <label for="judul" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
-
-    <div class="col-md-6">
-        <input id="judul" type="text" class="form-control" name="judul" required autofocus>
-    </div>
+    {!! Form::label('judul', __('Title'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+    {!! Form::text('judul', null, ['class' => 'form-control col-md-7', 'name' => 'judul', 'required', 'autofocus', 'value' => old('judul')]) !!}
 </div>
 
 <div class="form-group row">
-    <label for="isi" class="col-md-4 col-form-label text-md-right">{{ __('Content') }}</label>
-
-    <div class="col-md-6">
-        {!! Form::textarea('isi', null, ['class' => 'form-control', 'name' => 'isi']) !!}
-    </div>
+    {!! Form::label('isi', __('Content'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+    {!! Form::textarea('isi', null, ['class' => 'form-control col-md-7', 'name' => 'isi', 'value' => old('isi')]) !!}
 </div>
 
 <div class="form-group row">
-    <label for="kategori_artikel_id" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
-
-    <div class="col-md-6">
-        {!! Form::select('kategori_artikel_id', $kategori_artikel, null, ['class' => 'form-control']) !!}
-    </div>
+    {!! Form::label('isi', __('Category'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+    {!! Form::select('kategori_artikel_id', $kategori_artikel, $selected, ['class' => 'form-control col-md-7', 'name' => 'kategori_artikel_id', 'value' => old('kategori_artikel_id')]) !!}
 </div>
 
-<div class="form-group row">
-    <input id="users_id" type="hidden" class="form-control @error('users_id') is-invalid @enderror" name="users_id" value="{{ Auth::id() }}" required>
-
-    @error('title')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-</div>
+{!! Form::hidden('users_id', Auth::id(), ['name' => 'users_id']) !!}
 
 <div class="form-group row mb-0">
     <div class="col-md-6 offset-md-4">
-        <button type="submit" class="btn btn-primary">
-            {{ __('Done') }}
-        </button>
+        {!! Form::submit(__('Done'), ['class' => 'btn btn-primary']) !!}
         <a href="{!! route('artikel.index') !!}" class="btn btn-danger">
             Cancel
         </a>
     </div>
 </div>
 
-<script src="https://cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace( 'isi' );
+    ClassicEditor
+        .create( document.querySelector( '#isi' ) )
+        .then( editor => {
+                console.log( editor );
+        } )
+        .catch( error => {
+                console.error( error );
+        } );
 </script>
