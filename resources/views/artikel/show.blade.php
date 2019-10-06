@@ -27,12 +27,12 @@
 
                     <div class="form-group row">
                         <label for="judul" class="col-md-3 col-form-label text-md-right">Created At</label>
-                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->created_at }}</label>
+                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->created_at->format('D, d M Y H:m') }}</label>
                     </div>
 
                     <div class="form-group row">
                         <label for="judul" class="col-md-3 col-form-label text-md-right">Last Updated</label>
-                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->updated_at }}</label>
+                        <label for="judul" class="col-md-6 col-form-label text-md-left">{{ $artikel->updated_at->format('D, d M Y H:m') }}</label>
                     </div>
 
                     <div class="form-group row">
@@ -41,8 +41,9 @@
                     </div>
 
                     <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4">
-
+                        <div class="col-md-6 offset-md-5">
+                            <a href="{!! route('artikel.edit', $artikel->id) !!}" class="btn btn-primary">Edit</a>
+                            <a href="{!! route('artikel.destroy', $artikel->id) !!}" class="btn btn-secondary">Delete</a>
                         </div>
                     </div>
                 </div>
