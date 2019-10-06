@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\artikel;
+use App\kategori;
 use App\kategori_artikel;
 use Illuminate\Http\Request;
 
@@ -67,9 +68,14 @@ class ArtikelController extends Controller
      * @param  \App\artikel  $artikel
      * @return \Illuminate\Http\Response
      */
-    public function edit(artikel $artikel)
+    public function edit($id)
     {
-        //
+        $artikel = artikel::findOrFail($id);
+
+        $kategori_artikel = kategori_artikel::pluck('nama', 'id');
+        $selected = $artikel->kategori_artikel->pluck('nama', 'id');
+
+        return view('artikel.edit', compact('artikel', 'kategori_artikel', 'selected'));
     }
 
     /**
@@ -79,9 +85,12 @@ class ArtikelController extends Controller
      * @param  \App\artikel  $artikel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, artikel $artikel)
+    public function update(Request $request, $id)
     {
-        //
+        $edit = $request->all();
+        artikel::find($id)->update($edit);
+
+        return redirect(route('artikel.index'));
     }
 
     /**
