@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Galleries') }}</div>
+                <div class="card-header text-center">{{ __('Galleries') }}</div>
 
                 <div class="card-body">
                     <form>
@@ -16,32 +16,48 @@
                         </div>
 
                         <div class="form-group row">
-                            <table class="table table-striped">
-                                <tr>
+                            <table class="table table-striped table-responsive">
+                                <thead class="table thead">
                                     <th>ID</th>
                                     <th>Category</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Path</th>
+                                    <th width="120px">Name</th>
+                                    <th width="40%">Description</th>
                                     <th>Created At</th>
                                     <th>Publisher</th>
                                     <th>Action</th>
-                                </tr>
-                                @foreach($galeri as $item)
+                                </thead>
+                                <tbody class="text-justify">
+                                    @foreach($galeri as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->kategori_galeri->nama }}</td>
+                                            <td>{{ Str::limit($item->judul, 30) }}</td>
+                                            <td>{{ Str::limit($item->isi, 200) }}</td>
+                                            <td>{{ $item->created_at->format('d-m-Y') }}</td>
+                                            <td>{{ $item->users->name }}</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-primary btn-block" href="{{ route('galeri.show', $item->id) }}">View</a>
+                                                <a class="btn btn-sm btn-secondary btn-block" href="{{ route('galeri.edit', $item->id) }}">Edit</a>
+                                                {!! Form::open(['route' => ['galeri.destroy', $item->id], 'method' => 'delete']) !!}
+                                                    {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger btn-block']) !!}
+                                                {!! Form::close() !!}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
                                     <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->kategori_galeri->nama }}</td>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->keterangan }}</td>
-                                        <td>{{ $item->path }}</td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td>{{ $item->users->name }}</td>
-                                        <td><a class="btn btn-sm btn-primary" href="{{ route('galeri.show', $item->id)}}">View</a></td>
+                                        <td colspan="7" class="text-center text-muted">
+                                            Approximately a total of {{ DB::table('artikel')->count() }} records present in the Database.
+                                        </td>
                                     </tr>
-                                @endforeach
+                                </tfoot>
                             </table>
                         </div>
                     </form>
+                </div>
+                <div class="card-footer">
+                    @include('layouts.footer')
                 </div>
             </div>
         </div>
