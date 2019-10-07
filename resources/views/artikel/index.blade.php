@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Articles') }}</div>
+                <div class="card-header text-center">{{ __('Articles') }}</div>
 
                 <div class="card-body">
                     <form>
@@ -17,32 +17,47 @@
 
                         <div class="form-group row">
                             <table class="table table-striped table-responsive">
-                                <thead class="thead">
+                                <thead class="table thead">
                                     <th>ID</th>
                                     <th>Category</th>
-                                    <th>Title</th>
-                                    <th>Content</th>
+                                    <th width="120px">Title</th>
+                                    <th width="40%">Content</th>
                                     <th>Created At</th>
                                     <th>Publisher</th>
                                     <th>Action</th>
                                 </thead>
-                                <tbody>
+                                <tbody class="text-justify">
                                     @foreach($artikel as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->kategori_artikel->nama }}</td>
-                                            <td>{{ $item->judul }}</td>
-                                            <td>{{ $item->isi }}</td>
+                                            <td>{{ Str::limit($item->judul, 30) }}</td>
+                                            <td>{{ Str::limit($item->isi, 200) }}</td>
                                             <td>{{ $item->created_at->format('d-m-Y') }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td><a class="btn btn-sm btn-primary" href="{{ route('artikel.show', $item->id)}}">View</a><br>
-                                                <a class="btn btn-sm btn-secondary" href="{{ route('artikel.edit', $item->id)}}">Edit</a></td>
+                                            <td>
+                                                <a class="btn btn-sm btn-primary btn-block" href="{{ route('artikel.show', $item->id) }}">View</a>
+                                                <a class="btn btn-sm btn-secondary btn-block" href="{{ route('artikel.edit', $item->id) }}">Edit</a>
+                                                {!! Form::open(['route' => ['artikel.destroy', $item->id], 'method' => 'delete']) !!}
+                                                    {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger btn-block']) !!}
+                                                {!! Form::close() !!}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="7" class="text-center text-muted">
+                                            Approximately a total of {{ DB::table('artikel')->count() }} records present in the Database.
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </form>
+                </div>
+                <div class="card-footer">
+                    @include('layouts.footer')
                 </div>
             </div>
         </div>

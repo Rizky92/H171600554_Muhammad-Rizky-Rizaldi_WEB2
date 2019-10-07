@@ -66,9 +66,14 @@ class BeritaController extends Controller
      * @param  \App\berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(berita $berita)
+    public function edit($id)
     {
-        //
+        $berita = berita::find($id);
+
+        $kategori_berita = kategori_berita::pluck('nama', 'id');
+        $selected = kategori_berita::pluck('nama', 'id');
+
+        return view('berita.edit', compact('berita', 'kategori_berita', 'selected'));
     }
 
     /**
@@ -78,9 +83,12 @@ class BeritaController extends Controller
      * @param  \App\berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, berita $berita)
+    public function update(Request $request, $id)
     {
-        //
+        $edit = $request->all();
+        berita::find($id)->update($edit);
+
+        return redirect(route('berita.index'));
     }
 
     /**

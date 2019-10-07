@@ -3,14 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Write an Article') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('artikel.store') }}">
+                    {!! Form::open(['route' => 'artikel.store', 'method' => 'POST']) !!}
                         @include('artikel.form')
-                    </form>
+                    {!! Form::close() !!}
+                </div>
+                <div class="card-footer">
+                    @include('layouts.footer')
                 </div>
             </div>
         </div>

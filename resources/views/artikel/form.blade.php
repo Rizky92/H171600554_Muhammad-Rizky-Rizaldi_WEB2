@@ -1,7 +1,7 @@
 @csrf
 <div class="form-group row">
     {!! Form::label('judul', __('Title'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-    {!! Form::text('judul', null, ['class' => 'form-control col-md-7', 'name' => 'judul', 'required', 'autofocus', 'value' => old('judul')]) !!}
+    {!! Form::text('judul', null, ['class' => 'form-control col-md-7', 'name' => 'judul', 'required', 'autofocus', 'value' => old('judul'), 'placeholder' => 'Insert your title...']) !!}
 </div>
 
 <div class="form-group row">
@@ -10,7 +10,7 @@
 </div>
 
 <div class="form-group row">
-    {!! Form::label('isi', __('Category'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+    {!! Form::label('kategori_artikel_id', __('Category'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
     {!! Form::select('kategori_artikel_id', $kategori_artikel, $selected, ['class' => 'form-control col-md-7', 'name' => 'kategori_artikel_id', 'value' => old('kategori_artikel_id')]) !!}
 </div>
 
@@ -25,14 +25,8 @@
     </div>
 </div>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script>
 <script>
-    ClassicEditor
-        .create( document.querySelector( '#isi' ) )
-        .then( editor => {
-                console.log( editor );
-        } )
-        .catch( error => {
-                console.error( error );
-        } );
+    CKEDITOR.replace( 'isi' );
 </script>
+

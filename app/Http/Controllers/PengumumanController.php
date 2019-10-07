@@ -66,9 +66,14 @@ class PengumumanController extends Controller
      * @param  \App\pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function edit(pengumuman $pengumuman)
+    public function edit($id)
     {
-        //
+        $pengumuman = pengumuman::find($id);
+
+        $kategori_pengumuman = kategori_pengumuman::pluck('nama', 'id');
+        $selected = kategori_pengumuman::pluck('nama', 'id');
+
+        return view('pengumuman.edit', compact('pengumuman', 'kategori_pengumuman', 'selected'));
     }
 
     /**
@@ -78,9 +83,12 @@ class PengumumanController extends Controller
      * @param  \App\pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pengumuman $pengumuman)
+    public function update(Request $request, $id)
     {
-        //
+        $edit = $request->all();
+        pengumuman::find($id)->update($edit);
+
+        return redirect(route('pengumuman.index'));
     }
 
     /**

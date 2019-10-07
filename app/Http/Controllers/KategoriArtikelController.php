@@ -70,7 +70,9 @@ class KategoriArtikelController extends Controller
      */
     public function edit(kategori_artikel $kategori_artikel)
     {
-        //
+        $kategori_artikel = kategori_artikel::find($id);
+
+        return view('kategori_artikel.edit', compact('kategori_artikel'));
     }
 
     /**
@@ -82,7 +84,10 @@ class KategoriArtikelController extends Controller
      */
     public function update(Request $request, kategori_artikel $kategori_artikel)
     {
-        //
+        $edit = $request->all();
+        kategori_artikel::find($id)->update($edit);
+
+        return redirect(route('kategori.index'));
     }
 
     /**

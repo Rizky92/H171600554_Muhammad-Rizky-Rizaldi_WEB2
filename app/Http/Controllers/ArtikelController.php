@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\artikel;
-use App\kategori;
 use App\kategori_artikel;
 use Illuminate\Http\Request;
 
@@ -45,7 +44,7 @@ class ArtikelController extends Controller
 
         artikel::create($input);
 
-        return redirect(route('artikel.index'));
+        return redirect(route('artikel.index')->with('Success', 'Article successfully added'));
     }
 
     /**
@@ -57,7 +56,7 @@ class ArtikelController extends Controller
 
     public function show($id)
     {
-        $artikel = artikel::find($id);
+        $artikel = artikel::findOrFail($id);
 
         return view('artikel.show', compact('artikel'));
     }
@@ -70,7 +69,7 @@ class ArtikelController extends Controller
      */
     public function edit($id)
     {
-        $artikel = artikel::findOrFail($id);
+        $artikel = artikel::find($id);
 
         $kategori_artikel = kategori_artikel::pluck('nama', 'id');
         $selected = $artikel->kategori_artikel->pluck('nama', 'id');
@@ -99,8 +98,13 @@ class ArtikelController extends Controller
      * @param  \App\artikel  $artikel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(artikel $artikel)
+    public function destroy($id)
     {
-        //
+        // Beta process :)
+        /*
+        artikel::findOrFail($id)->delete();
+
+        return redirect(route('artikel.index'));
+        */
     }
 }

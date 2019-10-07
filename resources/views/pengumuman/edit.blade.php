@@ -5,13 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Write a News') }}</div>
+                <div class="card-header">{{ __('Edit an Announcement') }}</div>
 
                 <div class="card-body">
-                    {!! Form::open(['route' => 'berita.store', 'method' => 'POST']) !!}
-                        @include('berita.form')
+                    {!! Form::model($pengumuman, ['route' => ['pengumuman.update', $pengumuman->id], 'method' => 'PUT']) !!}
+                        @include('artikel.form')
                     {!! Form::close() !!}
                 </div>
+
                 <div class="card-footer">
                     @include('layouts.footer')
                 </div>
