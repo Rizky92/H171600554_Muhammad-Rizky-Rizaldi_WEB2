@@ -34,3 +34,7 @@ Route::resource('/artikel', 'ArtikelController');
 Route::resource('/berita', 'BeritaController');
 Route::resource('/galeri', 'GaleriController');
 Route::resource('/pengumuman', 'PengumumanController');
+
+Route::get('/foto-test', function () {
+    echo Form::file('submit');
+});

@@ -3,14 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Add New News Category') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('kategori_berita.store') }}">
+                    {!! Form::open(['route' => 'kategori_berita.store', 'method' => 'POST']) !!}
                         @include('kategori_berita.form')
-                    </form>
+                    {!! Form::close() !!}
+                </div>
+                <div class="card-footer">
+                    @include('layouts.footer')
                 </div>
             </div>
         </div>

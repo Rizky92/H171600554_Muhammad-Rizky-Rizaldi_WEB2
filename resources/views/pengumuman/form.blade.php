@@ -1,7 +1,7 @@
 @csrf
 <div class="form-group row">
     {!! Form::label('judul', __('Title'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-    {!! Form::text('judul', null, ['class' => 'form-control col-md-7', 'name' => 'judul', 'required', 'autofocus', 'value' => old('judul'), 'placeholder' => 'Insert your title...']) !!}
+    {!! Form::text('judul', null, ['class' => 'form-control col-md-7', 'name' => 'judul', 'required', 'autofocus', 'value' => old('judul'), 'placeholder' => 'Insert your announcement title...']) !!}
 </div>
 
 <div class="form-group row">
@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<script src="https://cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'isi' );
 </script>

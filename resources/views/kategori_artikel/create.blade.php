@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Write an Article') }}</div>
+                <div class="card-header">{{ __('Add New Article Category') }}</div>
 
                 <div class="card-body">
-                    {!! Form::open(['route' => 'artikel.store', 'method' => 'POST']) !!}
-                        @include('artikel.form')
+                    {!! Form::open(['route' => 'kategori_artikel.store', 'method' => 'POST']) !!}
+                        @include('kategori_artikel.form')
                     {!! Form::close() !!}
                 </div>
                 <div class="card-footer">

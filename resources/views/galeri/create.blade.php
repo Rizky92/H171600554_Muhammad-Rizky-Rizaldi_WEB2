@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Add New Gallery') }}</div>
+                <div class="card-header">{{ __('Add new Gallery') }}</div>
 
                 <div class="card-body">
                     {!! Form::open(['route' => 'galeri.store', 'method' => 'POST']) !!}

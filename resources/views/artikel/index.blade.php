@@ -17,12 +17,12 @@
 
                         <div class="form-group row">
                             <table class="table table-striped table-responsive">
-                                <thead class="table thead">
+                                <thead class="thead-dark">
                                     <th>ID</th>
                                     <th>Category</th>
                                     <th width="120px">Title</th>
                                     <th width="40%">Content</th>
-                                    <th>Created At</th>
+                                    <th>Created</th>
                                     <th>Publisher</th>
                                     <th>Action</th>
                                 </thead>
@@ -36,19 +36,24 @@
                                             <td>{{ $item->created_at->format('d-m-Y') }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary btn-block" href="{{ route('artikel.show', $item->id) }}">View</a>
-                                                <a class="btn btn-sm btn-secondary btn-block" href="{{ route('artikel.edit', $item->id) }}">Edit</a>
-                                                {!! Form::open(['route' => ['artikel.destroy', $item->id], 'method' => 'delete']) !!}
-                                                    {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger btn-block']) !!}
-                                                {!! Form::close() !!}
+                                                <div class="btn-group" role="group">
+                                                    <a class="btn btn-sm btn-secondary" href="{{ route('artikel.show', $item->id) }}">View</a>
+                                                    <a class="btn btn-sm btn-secondary" href="{{ route('artikel.edit', $item->id) }}">Edit</a>
+                                                    {!! Form::open(['route' => ['artikel.destroy', $item->id], 'method' => 'delete']) !!}
+                                                        {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-secondary']) !!}
+                                                    {!! Form::close() !!}
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="7" class="text-center text-muted">
-                                            Approximately a total of {{ DB::table('artikel')->count() }} records present in the Database.
+                                        <td colspan="7" align="center">
+                                            {{ $artikel->links() }}
+                                            <div class="text-muted text-small">
+                                                Showing {{ count($artikel) }} out of {{ $artikel->total() }} record(s).
+                                            </div>
                                         </td>
                                     </tr>
                                 </tfoot>

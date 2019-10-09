@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     {!! Form::model($pengumuman, ['route' => ['pengumuman.update', $pengumuman->id], 'method' => 'PUT']) !!}
-                        @include('artikel.form')
+                        @include('pengumuman.form')
                     {!! Form::close() !!}
                 </div>
 
