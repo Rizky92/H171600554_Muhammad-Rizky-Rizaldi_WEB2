@@ -28,8 +28,9 @@ class ArtikelController extends Controller
     public function create()
     {
         $kategori_artikel = kategori_artikel::pluck('nama', 'id');
+        $selected = null;
 
-        return view('artikel.create')->with('kategori_artikel', $kategori_artikel);
+        return view('artikel.create', compact('kategori_artikel', 'selected'));
     }
 
     /**
@@ -44,7 +45,7 @@ class ArtikelController extends Controller
 
         artikel::create($input);
 
-        return redirect(route('artikel.index')->with('Success', 'Article successfully added'));
+        return redirect(route('artikel.index'));
     }
 
     /**

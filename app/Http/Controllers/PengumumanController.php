@@ -28,8 +28,9 @@ class PengumumanController extends Controller
     public function create()
     {
         $kategori_pengumuman = kategori_pengumuman::pluck('nama', 'id');
+        $selected = null;
 
-        return view('pengumuman.create')->with('kategori_pengumuman', $kategori_pengumuman);
+        return view('pengumuman.create', compact('kategori_pengumuman', 'selected');
     }
 
     /**

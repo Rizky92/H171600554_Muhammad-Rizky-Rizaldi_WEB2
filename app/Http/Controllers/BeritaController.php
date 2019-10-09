@@ -28,8 +28,9 @@ class BeritaController extends Controller
     public function create()
     {
         $kategori_berita = kategori_berita::pluck('nama', 'id');
+        $selected = null;
 
-        return view('berita.create')->with('kategori_berita', $kategori_berita);
+        return view('berita.create', compact('kategori_berita', 'selected'));
     }
 
     /**
