@@ -27,7 +27,7 @@
                                     <th>Action</th>
                                 </thead>
                                 <tbody class="text-justify">
-                                    @foreach($artikel as $item)
+                                    @foreach($pengumuman as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->kategori_pengumuman->nama }}</td>
@@ -49,8 +49,8 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="7" align="center">
-                                            {{ $artikel->links() }}
+                                        <td colspan="7" class="text-center">
+                                            {{ $pengumuman->links() }}
                                             <div class="text-muted text-small">
                                                 Showing {{ count($pengumuman) }} out of {{ $pengumuman->total() }} record(s).
                                             </div>

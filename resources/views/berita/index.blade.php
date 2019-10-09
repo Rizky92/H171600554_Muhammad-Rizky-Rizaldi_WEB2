@@ -50,7 +50,7 @@
                                 <tfoot>
                                     <tr>
                                         <td colspan="7" align="center">
-                                            {{ $galeri->links() }}
+                                            {{ $berita->links() }}
                                             <div class="text-muted text-small">
                                                 Showing {{ count($berita) }} out of {{ $berita->total() }} record(s).
                                             </div>

@@ -26,7 +26,7 @@
                                         <th scope="col" width="80px">Action</th>
                                     </thead>
                                     <tbody class="text-justify">
-                                        @foreach($kategori_artikel as $item)
+                                        @foreach($kategori_pengumuman as $item)
                                             <tr>
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ Str::limit($item->nama, 50) }}</td>
@@ -47,7 +47,7 @@
                                     <tfoot>
                                         <tr>
                                             <td colspan="7" align="center">
-                                                {{ $kategori_artikel->links() }}
+                                                {{ $kategori_pengumuman->links() }}
                                                 <div class="text-muted text-small">
                                                     Showing {{ count($kategori_pengumuman) }} out of {{ $kategori_pengumuman->total() }} record(s).
                                                 </div>
