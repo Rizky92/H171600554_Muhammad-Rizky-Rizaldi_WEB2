@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 class KategoriArtikelController extends Controller
 {
-
-
-    // Call the model file
-
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +15,7 @@ class KategoriArtikelController extends Controller
     public function index()
     {
         //
-        $kategori_artikel = kategori_artikel::all();
+        $kategori_artikel = kategori_artikel::paginate(25);
 
         return view('kategori_artikel.index', compact('kategori_artikel'));
     }
@@ -68,7 +64,7 @@ class KategoriArtikelController extends Controller
      * @param  \App\kategori_artikel  $kategori_artikel
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategori_artikel $kategori_artikel)
+    public function edit($id)
     {
         $kategori_artikel = kategori_artikel::find($id);
 
@@ -82,12 +78,12 @@ class KategoriArtikelController extends Controller
      * @param  \App\kategori_artikel  $kategori_artikel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kategori_artikel $kategori_artikel)
+    public function update(Request $request, $id)
     {
         $edit = $request->all();
         kategori_artikel::find($id)->update($edit);
 
-        return redirect(route('kategori.index'));
+        return redirect(route('kategori_artikel.index'));
     }
 
     /**
@@ -96,8 +92,10 @@ class KategoriArtikelController extends Controller
      * @param  \App\kategori_artikel  $kategori_artikel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kategori_artikel $kategori_artikel)
+    public function destroy($id)
     {
-        //
+        kategori_artikel::find($id)->delete();
+
+        return redirect(route('kategori_artikel.index'));
     }
 }

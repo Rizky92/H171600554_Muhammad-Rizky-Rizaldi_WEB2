@@ -15,7 +15,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $pengumuman = pengumuman::all();
+        $pengumuman = pengumuman::paginate(25);
 
         return view('pengumuman.index', compact('pengumuman'));
     }
@@ -97,8 +97,10 @@ class PengumumanController extends Controller
      * @param  \App\pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pengumuman $pengumuman)
+    public function destroy($id)
     {
-        //
+        pengumuman::destroy($id);
+
+        return redirect(route('pengumuman.index'));
     }
 }

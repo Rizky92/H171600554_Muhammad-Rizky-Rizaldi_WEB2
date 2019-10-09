@@ -15,7 +15,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $artikel = artikel::all();
+        $artikel = artikel::paginate(25);
 
         return view('artikel.index', compact('artikel'));
     }
@@ -101,10 +101,8 @@ class ArtikelController extends Controller
     public function destroy($id)
     {
         // Beta process :)
-        /*
-        artikel::findOrFail($id)->delete();
+        artikel::destroy($id);
 
         return redirect(route('artikel.index'));
-        */
     }
 }

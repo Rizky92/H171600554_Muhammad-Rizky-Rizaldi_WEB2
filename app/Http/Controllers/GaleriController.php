@@ -15,7 +15,7 @@ class GaleriController extends Controller
      */
     public function index()
     {
-        $galeri = galeri::all();
+        $galeri = galeri::paginate(25);
 
         return view('galeri.index', compact('galeri'));
     }
@@ -40,7 +40,7 @@ class GaleriController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = $request->except('path');
 
         galeri::create($input);
 
@@ -97,8 +97,10 @@ class GaleriController extends Controller
      * @param  \App\galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function destroy(galeri $galeri)
+    public function destroy($id)
     {
-        //
+        galeri::destroy($id);
+
+        return redirect(route('galeri.index'));
     }
 }

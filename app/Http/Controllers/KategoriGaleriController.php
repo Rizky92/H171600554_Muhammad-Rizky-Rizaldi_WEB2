@@ -14,7 +14,7 @@ class KategoriGaleriController extends Controller
      */
     public function index()
     {
-        $kategori_galeri = kategori_galeri::all();
+        $kategori_galeri = kategori_galeri::paginate(25);
 
         return view('kategori_galeri.index', compact('kategori_galeri'));
     }
@@ -63,9 +63,11 @@ class KategoriGaleriController extends Controller
      * @param  \App\kategori_galeri  $kategori_galeri
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategori_galeri $kategori_galeri)
+    public function edit($id)
     {
-        //
+        $kategori_galeri = kategori_galeri::find($id);
+
+        return view('kategori_galeri.edit', compact('kategori_galeri'));
     }
 
     /**
@@ -75,9 +77,12 @@ class KategoriGaleriController extends Controller
      * @param  \App\kategori_galeri  $kategori_galeri
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kategori_galeri $kategori_galeri)
+    public function update(Request $request, $id)
     {
-        //
+        $edit = $request->all();
+        kategori_galeri::find($id)->update($edit);
+
+        return redirect(route('kategori_galeri.index'));
     }
 
     /**
@@ -86,8 +91,10 @@ class KategoriGaleriController extends Controller
      * @param  \App\kategori_galeri  $kategori_galeri
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kategori_galeri $kategori_galeri)
+    public function destroy($id)
     {
-        //
+        kategori_galeri::find($id)->delete();
+
+        return redirect(route('kategori_galeri.index'))
     }
 }

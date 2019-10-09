@@ -15,7 +15,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $berita = berita::all();
+        $berita = berita::paginate(25);
 
         return view('berita.index', compact('berita'));
     }
@@ -97,8 +97,10 @@ class BeritaController extends Controller
      * @param  \App\berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(berita $berita)
+    public function destroy($id)
     {
-        //
+        berita::destroy($id);
+
+        return redirect(route('berita.index'));
     }
 }

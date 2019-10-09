@@ -14,7 +14,7 @@ class KategoriPengumumanController extends Controller
      */
     public function index()
     {
-        $kategori_pengumuman = kategori_pengumuman::all();
+        $kategori_pengumuman = kategori_pengumuman::paginate(25);
 
         return view('kategori_pengumuman.index', compact('kategori_pengumuman'));
     }
@@ -63,9 +63,11 @@ class KategoriPengumumanController extends Controller
      * @param  \App\kategori_pengumuman  $kategori_pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategori_pengumuman $kategori_pengumuman)
+    public function edit($id)
     {
-        //
+        $kategori_pengumuman = kategori_pengumuman::find($id);
+
+        return view('kategori_pengumuman.show', compact('kategori_pengumuman'));
     }
 
     /**
@@ -75,9 +77,12 @@ class KategoriPengumumanController extends Controller
      * @param  \App\kategori_pengumuman  $kategori_pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kategori_pengumuman $kategori_pengumuman)
+    public function update(Request $request, $id)
     {
-        //
+        $edit = $request->all();
+        kategori_pengumuman::find($id)->update($edit);
+
+        return redirect(route('kategori_pengumuman.index'));
     }
 
     /**
@@ -86,8 +91,10 @@ class KategoriPengumumanController extends Controller
      * @param  \App\kategori_pengumuman  $kategori_pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kategori_pengumuman $kategori_pengumuman)
+    public function destroy($id)
     {
-        //
+        kategori_pengumuman::find($id)->delete();
+
+        return redirect(route('kategori_pengumuman.index'));
     }
 }
