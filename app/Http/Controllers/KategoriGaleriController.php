@@ -95,6 +95,6 @@ class KategoriGaleriController extends Controller
     {
         kategori_galeri::find($id)->delete();
 
-        return redirect(route('kategori_galeri.index'))
+        return redirect(route('kategori_galeri.index'));
     }
 }
