@@ -28,8 +28,9 @@ class ArtikelController extends Controller
     public function create()
     {
         $kategori_artikel = kategori_artikel::pluck('nama', 'id');
+        $selected = null;
 
-        return view('artikel.create')->with('kategori_artikel', $kategori_artikel);
+        return view('artikel.create', compact('kategori_artikel', 'selected'));
     }
 
     /**

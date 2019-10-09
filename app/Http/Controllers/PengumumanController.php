@@ -29,7 +29,7 @@ class PengumumanController extends Controller
     {
         $kategori_pengumuman = kategori_pengumuman::pluck('nama', 'id');
 
-        return view('pengumuman.create')->with('kategori_pengumuman', $kategori_pengumuman);
+        return view('pengumuman.create', compact('kategori_pengumuman', 'selected'));
     }
 
     /**
