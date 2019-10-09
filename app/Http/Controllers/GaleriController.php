@@ -28,9 +28,8 @@ class GaleriController extends Controller
     public function create()
     {
         $kategori_galeri = kategori_galeri::pluck('nama', 'id');
-        $selected = null;
 
-        return view('galeri.create', compact('kategori_galeri', 'selected');
+        return view('galeri.create')->with('kategori_galeri', $kategori_galeri));
     }
 
     /**
