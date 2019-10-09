@@ -73,7 +73,7 @@ class GaleriController extends Controller
         $kategori_galeri = kategori_galeri::pluck('nama', 'id');
         $selected = kategori_galeri::pluck('nama', 'id');
 
-        return view('galeri.edit', compacr('galeri', 'kategori_galeri', 'selected'));
+        return view('galeri.edit', compact('galeri', 'kategori_galeri', 'selected'));
     }
 
     /**
