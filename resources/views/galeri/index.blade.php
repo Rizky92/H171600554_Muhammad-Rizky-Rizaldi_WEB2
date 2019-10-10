@@ -22,6 +22,7 @@
                                     <th>Category</th>
                                     <th width="120px">Name</th>
                                     <th width="40%">Description</th>
+                                    <th>Image</th>
                                     <th>Created</th>
                                     <th>Publisher</th>
                                     <th>Action</th>
@@ -33,6 +34,7 @@
                                             <td>{{ $item->kategori_galeri->nama }}</td>
                                             <td>{{ Str::limit($item->nama, 30) }}</td>
                                             <td>{{ Str::limit($item->keterangan, 200) }}</td>
+                                            <td> <a class="btn btn-sm btn-success" href="#"> {{ __('View') }} </a> </td>
                                             <td>{{ $item->created_at->format('d-m-Y') }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>

@@ -22,7 +22,7 @@
 
                     <div class="form-group row">
                         <label for="artikel" class="col-md-4 col-form-label text-md-right">Content</label>
-                        <label for="artikel" class="col-md-6 col-form-label text-md-left">{{ $artikel->isi }}</label>
+                        <span class="col-md-6">{!! $artikel->isi !!}</span>
                     </div>
 
                     <div class="form-group row">
