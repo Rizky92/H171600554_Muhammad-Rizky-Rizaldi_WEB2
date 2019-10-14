@@ -5,7 +5,7 @@ Tugas Pemrograman Web II
 Laravel ini telah dilengkapi dengan Model Factories menggunakan library Faker.  
 Setelah menghubungkan .env ke DB, perlu menjalankan perintah berikut:  
   
-	`php artisan storage:link`  
-    `php artisan migrate:fresh --seed`  
+	php artisan storage:link  
+    php artisan migrate:fresh --seed  
 	
 Ini akan migrate & populate isi DB.  
