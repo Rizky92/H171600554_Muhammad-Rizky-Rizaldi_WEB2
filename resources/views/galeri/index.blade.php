@@ -34,7 +34,7 @@
                                             <td>{{ $item->kategori_galeri->nama }}</td>
                                             <td>{{ Str::limit($item->nama, 30) }}</td>
                                             <td>{{ Str::limit($item->keterangan, 200) }}</td>
-                                            <td> <a class="btn btn-sm btn-success" href="#"> {{ __('View') }} </a> </td>
+                                            <td> <a class="btn btn-sm btn-success" href="{{ asset($item->path) }}"> {{ __('View') }} </a> </td>
                                             <td>{{ $item->created_at->format('d-m-Y') }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>
