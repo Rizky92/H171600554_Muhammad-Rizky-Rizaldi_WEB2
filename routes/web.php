@@ -27,7 +27,7 @@ Route::resource('/kategori_artikel', 'KategoriArtikelController');
 Route::get('/trashed/only/kategori_artikel', 'KategoriArtikelController@onlyTrashed')->name('kategori_artikel.onlyTrashed');
 Route::get('/trashed/with/kategori_artikel', 'KategoriArtikelController@withTrashed')->name('kategori_artikel.withTrashed');
 Route::patch('/restore/kategori_artikel', 'KategoriArtikelController@restore')->name('kategori_artikel.restore');
-Route::delete('/delete/kategori_artikel/{kategori_artikel}', 'KategoriArtikelController@delete')->name('kategori_artikel.delete');
+Route::delete('/delete/kategori_artikel', 'KategoriArtikelController@delete')->name('kategori_artikel.delete');
 
 Route::resource('/kategori_berita', 'KategoriBeritaController');
 // Route::get('/trashed/only/kategori_berita', 'KategoriBeritaController@onlytrashed')->name('kategori_berita.onlyTrashed');
