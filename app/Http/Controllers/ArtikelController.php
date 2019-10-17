@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\artikel;
 use App\kategori_artikel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\TrashedArtikels;
 
 class ArtikelController extends Controller
 {
@@ -101,8 +102,7 @@ class ArtikelController extends Controller
      */
     public function destroy($id)
     {
-        // Beta process :)
-        artikel::destroy($id);
+        artikel::find($id)->delete();
 
         return redirect(route('artikel.index'));
     }

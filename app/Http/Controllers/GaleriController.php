@@ -100,7 +100,7 @@ class GaleriController extends Controller
      */
     public function destroy($id)
     {
-        galeri::destroy($id);
+        galeri::find($id)->delete();
 
         return redirect(route('galeri.index'));
     }

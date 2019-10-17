@@ -30,7 +30,7 @@ class PengumumanController extends Controller
         $kategori_pengumuman = kategori_pengumuman::pluck('nama', 'id');
         $selected = null;
 
-        return view('pengumuman.create', compact('kategori_pengumuman', 'selected');
+        return view('pengumuman.create', compact('kategori_pengumuman', 'selected'));
     }
 
     /**
@@ -100,7 +100,7 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        pengumuman::destroy($id);
+        pengumuman::find($id)->delete();
 
         return redirect(route('pengumuman.index'));
     }

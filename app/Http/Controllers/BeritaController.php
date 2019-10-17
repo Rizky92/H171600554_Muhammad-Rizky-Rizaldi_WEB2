@@ -100,7 +100,7 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        berita::destroy($id);
+        berita::find($id)->delete();
 
         return redirect(route('berita.index'));
     }
