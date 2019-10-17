@@ -9,14 +9,14 @@
 
                 <div class="card-body">
                     @csrf
-                    <div class="card-img shadow shadow-sm">
+                    <div class="card-img-top text-center">
                         <img src="{{ asset($galeri->path) }}">
                     </div>
 
                     <div class="form-group row"></div>
                     <div class="form-group row">
                         <label for="artikel" class="col-md-4 col-form-label text-md-right">Image URL</label>
-                        <label for="artikel" class="col-md-6 col-form-label text-md-left">{{ public_path($galeri->path) }}</label>
+                        <label for="artikel" class="col-md-6 col-form-label text-md-left">{{ $galeri->path }}</label>
                     </div>
 
                     <div class="form-group row">
