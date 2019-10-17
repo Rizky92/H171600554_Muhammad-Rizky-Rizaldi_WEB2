@@ -75,7 +75,7 @@ class KategoriArtikelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\kategori_artikel  $kategori_artikel
+     * @param  \App\kategori_artikel->id  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -89,12 +89,66 @@ class KategoriArtikelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\kategori_artikel  $kategori_artikel
+     * @param  \App\kategori_artikel->id  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         kategori_artikel::find($id)->delete();
+
+        return redirect(route('kategori_artikel.index'));
+    }
+
+    /**
+     * View trashed resources from the storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function onlyTrashed()
+    {
+        $kategori_artikel = kategori_artikel::onlyTrashed()->paginate(25);
+
+        return view('kategori_artikel.index', compact('kategori_artikel'));
+    }
+
+    /**
+     * View trashed resources along with existing records from the storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function withTrashed()
+    {
+        $kategori_artikel = kategori_artikel::withTrashed()->paginate(25);
+
+        return view('kategori_artikel.index', compact('kategori_artikel'));
+    }
+
+    /**
+     * Restore all trashed resources in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function restore(Request $request)
+    {
+        kategori_artikel::restore();
+
+        return redirect(route('kategori_artikel.withTrashed'));
+    }
+
+    /**
+     * Force delete the specified resource from storage.
+     *
+     * @param  \App\kategori_artikel->id  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function delete()
+    {
+        kategori_artikel::onlyTrashed()->forceDelete();
 
         return redirect(route('kategori_artikel.index'));
     }
