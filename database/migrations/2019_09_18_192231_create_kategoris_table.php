@@ -19,7 +19,7 @@ class CreateKategorisTable extends Migration
             $table->text('ket');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users');
         });
     }
 
@@ -30,7 +30,7 @@ class CreateKategorisTable extends Migration
      */
     public function down(Blueprint $table)
     {
-        $table->dropForeign('user_id');
+        $table->dropForeign('users_id');
         Schema::dropIfExists('kategoris');
     }
 }
