@@ -42,8 +42,25 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         $input = $request->except('path');
+        $galeri = galeri::create($input);
 
-        galeri::create($input);
+        if ($request->has('path'))
+        {
+            $char = "0123456789abcedf";
+            $str = '';
+
+            for ($i = 0; $i < 32; $i++) {
+                $p = rand(0, strlen($char) - 1);
+                $str .= $char[$p];
+            }
+
+            $file = $request->file('path');
+            $filename = $str.$file->getClientOriginalExtension();
+            $path = $request->path->storeAs('public/galeri', $filename. 'local');
+
+            $galeri['path'] = "storage".substr($path, strpos($path, '/'));
+            $galeri->save();
+        }
 
         return redirect(route('galeri.index'));
     }

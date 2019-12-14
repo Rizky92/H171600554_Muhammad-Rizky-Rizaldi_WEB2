@@ -9,7 +9,7 @@ class galeri extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['nama', 'keterangan', 'path', 'kategori_galeri_id'];
+    protected $fillable = ['nama', 'keterangan', 'path', 'kategori_galeri_id', 'users_id'];
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     protected $table = 'galeri';
 
