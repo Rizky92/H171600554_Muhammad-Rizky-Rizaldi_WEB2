@@ -47,7 +47,7 @@
                                     <tfoot>
                                         <tr>
                                             <td colspan="7" align="center">
-                                                {{ $kategori_artikel->links() }}
+                                                {{ $kategori_galeri->links() }}
                                                 <div class="text-muted text-small">
                                                     Showing {{ count($kategori_galeri) }} out of {{ $kategori_galeri->total() }} record(s).
                                                 </div>

@@ -14,7 +14,7 @@
                         <div class="form-group row">
                             <a class="btn btn-primary" href="{{ route('kategori_artikel.create') }}">Add new data</a>
                             {{-- TODO: Add verification check for viewing only trashed records --}}
-                            {{-- @if (Route::has('kategori_artikel.onlyTrashed') || Route::has('kategori_artikel.withTrashed'))
+                            {{-- @if (Route::has('kategori_artikel.onlyTrashed'))
                                 {!! Form::model($kategori_artikel, ['route' => ['kategori_artikel.delete'], 'method' => 'delete']) !!}
                                     {!! Form::submit('Delete', ['class' => 'btn btn-secondary']) !!}
                                 {!! Form::close() !!}
@@ -43,9 +43,10 @@
                                                         <a class="btn btn-sm btn-secondary" href="{{ route('kategori_artikel.show', $item->id) }}">View</a>
                                                         <a class="btn btn-sm btn-secondary" href="{{ route('kategori_artikel.edit', $item->id) }}">Edit</a>
                                                         {!! Form::open(['route' => ['kategori_artikel.destroy', $item->id], 'method' => 'delete']) !!}
-                                                        {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-secondary']) !!}
+                                                            {{-- TODO: Add verification check for viewing only trashed records --}}
+                                                            {{-- TODO: Add confirmation before deleting --}}
+                                                            {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-secondary']) !!}
                                                         {!! Form::close() !!}
-                                                        {{-- TODO: Add verification check for viewing only trashed records --}}
                                                     </div>
                                                 </td>
                                             </tr>
@@ -56,6 +57,7 @@
                                             <td colspan="7" align="center">
                                                 {{ $kategori_artikel->links() }}
                                                 <div class="text-muted text-small">
+                                                    {{-- TODO: Separate the total of records for existing, "onlyTrashed", and "withTrashed" --}}
                                                     Showing {{ count($kategori_artikel) }} out of {{ $kategori_artikel->total() }} record(s).
                                                 </div>
                                             </td>

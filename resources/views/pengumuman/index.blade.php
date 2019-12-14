@@ -30,7 +30,7 @@
                                     @foreach($pengumuman as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->kategori_pengumuman->nama }}</td>
+                                            <td>{{ $item->kategori_pengumuman['nama'] }}</td>
                                             <td>{{ Str::limit($item->judul, 30) }}</td>
                                             <td>{{ Str::limit($item->isi, 200) }}</td>
                                             <td>{{ $item->created_at->format('d-m-Y') }}</td>
