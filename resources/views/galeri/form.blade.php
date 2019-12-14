@@ -5,6 +5,11 @@
 </div>
 
 <div class="form-group row">
+    {!! Form::label('path', __('Image'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+    {!! Form::file('path', null, ['class' => 'form-control col-md-7', 'name' => 'path']) !!}
+</div>
+
+<div class="form-group row">
     {!! Form::label('keterangan', __('Description'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
     {!! Form::textarea('keterangan', null, ['class' => 'form-control col-md-7', 'name' => 'keterangan', 'value' => old('keterangan')]) !!}
 </div>
@@ -27,6 +32,6 @@
 
 <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace( 'isi' );
+    CKEDITOR.replace( 'keterangan' );
 </script>
 

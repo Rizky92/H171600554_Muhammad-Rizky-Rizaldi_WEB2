@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Add new Gallery') }}</div>
 
                 <div class="card-body">
-                    {!! Form::open(['route' => 'galeri.store', 'method' => 'POST']) !!}
+                    {!! Form::open(['route' => 'galeri.store', 'method' => 'POST', 'files' => 'true']) !!}
                         @include('galeri.form')
                     {!! Form::close() !!}
                 </div>
