@@ -52,5 +52,3 @@ class LoginController extends Controller
         ]);
     }
 }
-
-// TODO: Refresh Captcha without refreshing page
