@@ -41,7 +41,6 @@
                             </div>
                         </div>
 
-                        <!-- TODO: Refresh Captcha here without refreshing page-->
                         <div class="form-group row">
                             <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('Captcha') }}</label>
 
