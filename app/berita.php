@@ -15,11 +15,11 @@ class berita extends Model
 
     public function kategori_berita()
     {
-        return $this->belongsTo('App\kategori_berita');
+        return $this->belongsTo('App\kategori_berita', 'kategori_berita_id');
     }
 
     public function users()
     {
-        return $this->belongsTo('App\user');
+        return $this->belongsTo('App\user', 'users_id');
     }
 }

@@ -15,11 +15,11 @@ class pengumuman extends Model
 
     public function kategori_pengumuman()
     {
-        return $this->belongsTo('App\kategori_pengumuman');
+        return $this->belongsTo('App\kategori_pengumuman', 'kategori_pengumuman_id');
     }
 
     public function users()
     {
-        return $this->belongsTo('App\user');
+        return $this->belongsTo('App\user', 'users_id');
     }
 }

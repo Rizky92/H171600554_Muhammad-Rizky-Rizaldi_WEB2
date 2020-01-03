@@ -14,6 +14,6 @@ class kategori_galeri extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\user');
+        return $this->belongsTo('App\user', 'users_id');
     }
 }

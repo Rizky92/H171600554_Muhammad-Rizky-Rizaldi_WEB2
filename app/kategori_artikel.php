@@ -14,6 +14,6 @@ class kategori_artikel extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\user');
+        return $this->belongsTo('App\user', 'users_id');
     }
 }

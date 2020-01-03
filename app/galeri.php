@@ -15,11 +15,11 @@ class galeri extends Model
 
     public function kategori_galeri()
     {
-        return $this->belongsTo('App\kategori_galeri');
+        return $this->belongsTo('App\kategori_galeri', 'kategori_galeri_id');
     }
 
     public function users()
     {
-        return $this->belongsTo('App\user');
+        return $this->belongsTo('App\user', 'users_id');
     }
 }

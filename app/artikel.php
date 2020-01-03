@@ -15,11 +15,11 @@ class artikel extends Model
 
     public function kategori_artikel()
     {
-        return $this->belongsTo('App\kategori_artikel');
+        return $this->belongsTo('App\kategori_artikel', 'kategori_artikel_id');
     }
 
     public function users()
     {
-        return $this->belongsTo('App\user');
+        return $this->belongsTo('App\user', 'users_id');
     }
 }
