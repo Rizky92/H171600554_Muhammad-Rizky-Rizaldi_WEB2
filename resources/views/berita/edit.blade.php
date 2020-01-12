@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Edit an Article') }}</div>
 
                 <div class="card-body">
-                    {!! Form::model($berita, ['route' => ['berita.update', $berita->id], 'method' => 'PUT']) !!}
+                    {!! Form::model($berita, ['route' => ['berita.update', $berita->id], 'method' => 'PATCH']) !!}
                         @include('berita.form')
                     {!! Form::close() !!}
                 </div>

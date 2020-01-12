@@ -8,8 +8,8 @@
                 <div class="card-header">{{ __('Edit a Gallery') }}</div>
 
                 <div class="card-body">
-                    {!! Form::model($berita, ['route' => ['berita.update', $berita->id], 'method' => 'PUT']) !!}
-                        @include('berita.form')
+                    {!! Form::model($galeri, ['route' => ['galeri.update', $galeri->id], 'method' => 'PATCH', 'files' => 'true']) !!}
+                        @include('galeri.form')
                     {!! Form::close() !!}
                 </div>
 

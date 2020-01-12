@@ -1,22 +1,22 @@
 @csrf
 <div class="form-group row">
-    {!! Form::label('judul', __('Name'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-    {!! Form::text('nama', null, ['class' => 'form-control col-md-7', 'name' => 'nama', 'required', 'autofocus', 'value' => old('nama'), 'placeholder' => 'Insert gallery name...']) !!}
+    {!! Form::label('nama', __('Name'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+    {!! Form::text('nama', old('nama'), ['class' => 'form-control col-md-7', 'required', 'autofocus', 'placeholder' => 'Insert gallery name...']) !!}
 </div>
 
 <div class="form-group row">
     {!! Form::label('path', __('Image'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-    {!! Form::file('path', null, ['class' => 'form-control col-md-7', 'name' => 'path']) !!}
+    {!! Form::file('path', old('path'), ['class' => 'form-control col-md-7']) !!}
 </div>
 
 <div class="form-group row">
     {!! Form::label('keterangan', __('Description'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-    {!! Form::textarea('keterangan', null, ['class' => 'form-control col-md-7', 'name' => 'keterangan', 'value' => old('keterangan')]) !!}
+    {!! Form::textarea('keterangan', old('keterangan'), ['class' => 'form-control col-md-7', 'required']) !!}
 </div>
 
 <div class="form-group row">
     {!! Form::label('kategori_galeri_id', __('Category'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-    {!! Form::select('kategori_galeri_id', $kategori_galeri, $selected, ['class' => 'form-control col-md-7', 'name' => 'kategori_galeri_id', 'value' => old('kategori_galeri_id')]) !!}
+    {!! Form::select('kategori_galeri_id', $kategori_galeri, old('kategori_galeri_id'), ['class' => 'form-control col-md-7', 'required']) !!}
 </div>
 
 {!! Form::hidden('users_id', Auth::id(), ['name' => 'users_id']) !!}
