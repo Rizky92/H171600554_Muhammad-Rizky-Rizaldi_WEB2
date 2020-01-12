@@ -17,7 +17,7 @@ class CreateGaleriTable extends Migration {
 			$table->increments('id');
 			$table->string('nama');
 			$table->text('keterangan', 65535)->nullable();
-            $table->string('path');
+            $table->string('path')->nullable();
 			$table->bigInteger('users_id')->unsigned()->index('fk_galeri_users_idx');
 			$table->timestamps();
 			$table->integer('kategori_galeri_id')->unsigned()->index('fk_galeri_kategori_berita1_idx');
