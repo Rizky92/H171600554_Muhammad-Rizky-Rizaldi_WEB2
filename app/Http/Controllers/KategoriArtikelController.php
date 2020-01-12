@@ -14,9 +14,7 @@ class KategoriArtikelController extends Controller
      */
     public function index()
     {
-        //
         $kategori_artikel = kategori_artikel::paginate(25);
-
         return view('kategori_artikel.index', compact('kategori_artikel'));
     }
 
@@ -39,9 +37,7 @@ class KategoriArtikelController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
         kategori_artikel::create($input);
-
         return redirect(route('kategori_artikel.index'));
     }
 
@@ -54,7 +50,6 @@ class KategoriArtikelController extends Controller
     public function show($id)
     {
         $kategori_artikel = kategori_artikel::find($id);
-
         return view('kategori_artikel.show', compact('kategori_artikel'));
     }
 
@@ -67,7 +62,6 @@ class KategoriArtikelController extends Controller
     public function edit($id)
     {
         $kategori_artikel = kategori_artikel::find($id);
-
         return view('kategori_artikel.edit', compact('kategori_artikel'));
     }
 
@@ -82,7 +76,6 @@ class KategoriArtikelController extends Controller
     {
         $edit = $request->all();
         kategori_artikel::find($id)->update($edit);
-
         return redirect(route('kategori_artikel.index'));
     }
 
@@ -95,7 +88,6 @@ class KategoriArtikelController extends Controller
     public function destroy($id)
     {
         kategori_artikel::find($id)->delete();
-
         return redirect(route('kategori_artikel.index'));
     }
 
@@ -108,7 +100,6 @@ class KategoriArtikelController extends Controller
     public function onlyTrashed()
     {
         $kategori_artikel = kategori_artikel::onlyTrashed()->paginate(25);
-
         return view('kategori_artikel.index', compact('kategori_artikel'));
     }
 
@@ -121,7 +112,6 @@ class KategoriArtikelController extends Controller
     public function withTrashed()
     {
         $kategori_artikel = kategori_artikel::withTrashed()->paginate(25);
-
         return view('kategori_artikel.index', compact('kategori_artikel'));
     }
 
@@ -135,7 +125,6 @@ class KategoriArtikelController extends Controller
     public function restore(Request $request)
     {
         kategori_artikel::restore();
-
         return redirect(route('kategori_artikel.withTrashed'));
     }
 
@@ -149,7 +138,6 @@ class KategoriArtikelController extends Controller
     public function delete()
     {
         kategori_artikel::onlyTrashed()->forceDelete();
-
         return redirect(route('kategori_artikel.index'));
     }
 }

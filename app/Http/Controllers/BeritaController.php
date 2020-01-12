@@ -16,7 +16,6 @@ class BeritaController extends Controller
     public function index()
     {
         $berita = berita::paginate(25);
-
         return view('berita.index', compact('berita'));
     }
 
@@ -28,9 +27,7 @@ class BeritaController extends Controller
     public function create()
     {
         $kategori_berita = kategori_berita::pluck('nama', 'id');
-        $selected = null;
-
-        return view('berita.create', compact('kategori_berita', 'selected'));
+        return view('berita.create', compact('kategori_berita'));
     }
 
     /**
@@ -42,9 +39,7 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
         berita::create($input);
-
         return redirect(route('berita.index'));
     }
 
@@ -57,7 +52,6 @@ class BeritaController extends Controller
     public function show($id)
     {
         $berita = berita::find($id);
-
         return view('berita.show', compact('berita'));
     }
 
@@ -70,11 +64,8 @@ class BeritaController extends Controller
     public function edit($id)
     {
         $berita = berita::find($id);
-
         $kategori_berita = kategori_berita::pluck('nama', 'id');
-        $selected = kategori_berita::pluck('nama', 'id');
-
-        return view('berita.edit', compact('berita', 'kategori_berita', 'selected'));
+        return view('berita.edit', compact('berita', 'kategori_berita'));
     }
 
     /**
@@ -86,9 +77,8 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $edit = $request->all();
-        berita::find($id)->update($edit);
-
+        $edit = $request->except('_method', '_token');
+        berita::where('id', $id)->update($edit);
         return redirect(route('berita.index'));
     }
 
@@ -100,8 +90,7 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        berita::find($id)->delete();
-
+        berita::where('id', $id)->delete();
         return redirect(route('berita.index'));
     }
 }

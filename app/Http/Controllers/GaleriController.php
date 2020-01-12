@@ -16,7 +16,6 @@ class GaleriController extends Controller
     public function index()
     {
         $galeri = galeri::paginate(25);
-
         return view('galeri.index', compact('galeri'));
     }
 
@@ -28,9 +27,7 @@ class GaleriController extends Controller
     public function create()
     {
         $kategori_galeri = kategori_galeri::pluck('nama', 'id');
-        $selected = null;
-
-        return view('galeri.create', compact('kategori_galeri', 'selected'));
+        return view('galeri.create', compact('kategori_galeri'));
     }
 
     /**
@@ -61,7 +58,7 @@ class GaleriController extends Controller
             $galeri['path'] = "storage".substr($path, strpos($path, '/'));
             $galeri->save();
         }
-
+        
         return redirect(route('galeri.index'));
     }
 
@@ -74,7 +71,6 @@ class GaleriController extends Controller
     public function show($id)
     {
         $galeri = galeri::find($id);
-
         return view('galeri.show', compact('galeri'));
     }
 
@@ -87,10 +83,7 @@ class GaleriController extends Controller
     public function edit($id)
     {
         $galeri = galeri::find($id);
-
         $kategori_galeri = kategori_galeri::pluck('nama', 'id');
-        $selected = kategori_galeri::pluck('nama', 'id');
-
         return view('galeri.edit', compact('galeri', 'kategori_galeri', 'selected'));
     }
 
@@ -103,8 +96,26 @@ class GaleriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $edit = $request->all();
-        galeri::find($id)->update($edit);
+        $edit = $request->except('path');
+        galeri::where('id', $id)->update($edit);
+
+        if ($request->has('path'))
+        {
+            $char = "0123456789abcedf";
+            $str = '';
+
+            for ($i = 0; $i < 32; $i++) {
+                $p = rand(0, strlen($char) - 1);
+                $str .= $char[$p];
+            }
+
+            $file = $request->file('path');
+            $filename = $str.$file->getClientOriginalExtension();
+            $path = $request->path->storeAs('public/galeri', $filename. 'local');
+
+            $galeri['path'] = "storage".substr($path, strpos($path, '/'));
+            $galeri->save();
+        }
 
         return redirect(route('galeri.index'));
     }
@@ -117,8 +128,7 @@ class GaleriController extends Controller
      */
     public function destroy($id)
     {
-        galeri::find($id)->delete();
-
+        galeri::where('id', $id)->delete();
         return redirect(route('galeri.index'));
     }
 }

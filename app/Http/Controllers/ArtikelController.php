@@ -17,7 +17,6 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikel = artikel::paginate(25);
-
         return view('artikel.index', compact('artikel'));
     }
 
@@ -29,9 +28,7 @@ class ArtikelController extends Controller
     public function create()
     {
         $kategori_artikel = kategori_artikel::pluck('nama', 'id');
-        $selected = null;
-
-        return view('artikel.create', compact('kategori_artikel', 'selected'));
+        return view('artikel.create', compact('kategori_artikel'));
     }
 
     /**
@@ -43,9 +40,7 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
         artikel::create($input);
-
         return redirect(route('artikel.index'));
     }
 
@@ -58,8 +53,7 @@ class ArtikelController extends Controller
 
     public function show($id)
     {
-        $artikel = artikel::findOrFail($id);
-
+        $artikel = artikel::find($id);
         return view('artikel.show', compact('artikel'));
     }
 
@@ -72,11 +66,8 @@ class ArtikelController extends Controller
     public function edit($id)
     {
         $artikel = artikel::find($id);
-
         $kategori_artikel = kategori_artikel::pluck('nama', 'id');
-        $selected = $artikel->kategori_artikel->pluck('nama', 'id');
-
-        return view('artikel.edit', compact('artikel', 'kategori_artikel', 'selected'));
+        return view('artikel.edit', compact('artikel', 'kategori_artikel'));
     }
 
     /**
@@ -89,8 +80,7 @@ class ArtikelController extends Controller
     public function update(Request $request, $id)
     {
         $edit = $request->all();
-        artikel::find($id)->update($edit);
-
+        artikel::where('id', $id)->update($edit);
         return redirect(route('artikel.index'));
     }
 
@@ -102,8 +92,57 @@ class ArtikelController extends Controller
      */
     public function destroy($id)
     {
-        artikel::find($id)->delete();
+        artikel::where('id', $id)->delete();
+        return redirect(route('artikel.index'));
+    }
 
+    /**
+     * View trashed resources from the storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function onlyTrashed()
+    {
+        $artikel = artikel::onlyTrashed()->paginate(25);
+        return view('artikel.index', compact('artikel'));
+    }
+
+    /**
+     * View trashed resources along with existing records from the storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function withTrashed()
+    {
+        $artikel = artikel::withTrashed()->paginate(25);
+        return view('artikel.index', compact('artikel'));
+    }
+
+    /**
+     * Restore all trashed resources in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function restore(Request $request)
+    {
+        artikel::restore();
+        return redirect(route('kategori_artikel.withTrashed'));
+    }
+
+    /**
+     * Force delete the specified resource from storage.
+     *
+     * @param  \App\kategori_artikel->id  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function delete()
+    {
+        artikel::onlyTrashed()->forceDelete();
         return redirect(route('artikel.index'));
     }
 }

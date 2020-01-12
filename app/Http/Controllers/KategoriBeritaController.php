@@ -15,7 +15,6 @@ class KategoriBeritaController extends Controller
     public function index()
     {
         $kategori_berita = kategori_berita::paginate(25);
-
         return view('kategori_berita.index', compact('kategori_berita'));
     }
 
@@ -38,9 +37,7 @@ class KategoriBeritaController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
         kategori_berita::create($input);
-
         return redirect(route('kategori_berita.index'));
     }
 
@@ -53,7 +50,6 @@ class KategoriBeritaController extends Controller
     public function show($id)
     {
         $kategori_berita = kategori_berita::find($id);
-
         return view('kategori_berita.show', compact('kategori_berita'));
     }
 
@@ -66,7 +62,6 @@ class KategoriBeritaController extends Controller
     public function edit($id)
     {
         $kategori_berita = kategori_berita::find($id);
-
         return view('kategori_berita.edit', compact('kategori_berita'));
     }
 
@@ -81,7 +76,6 @@ class KategoriBeritaController extends Controller
     {
         $edit = $request->all();
         kategori_berita::find($id)->update($edit);
-
         return redirect(route('kategori_berita.index'));
     }
 
@@ -94,7 +88,6 @@ class KategoriBeritaController extends Controller
     public function destroy($id)
     {
         kategori_berita::find($id)->delete();
-
         return redirect(route('kategori_berita.index'));
     }
 }

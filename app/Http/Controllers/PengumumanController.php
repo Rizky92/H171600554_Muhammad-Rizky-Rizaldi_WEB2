@@ -16,7 +16,6 @@ class PengumumanController extends Controller
     public function index()
     {
         $pengumuman = pengumuman::paginate(25);
-
         return view('pengumuman.index', compact('pengumuman'));
     }
 
@@ -28,9 +27,7 @@ class PengumumanController extends Controller
     public function create()
     {
         $kategori_pengumuman = kategori_pengumuman::pluck('nama', 'id');
-        $selected = null;
-
-        return view('pengumuman.create', compact('kategori_pengumuman', 'selected'));
+        return view('pengumuman.create', compact('kategori_pengumuman'));
     }
 
     /**
@@ -42,9 +39,7 @@ class PengumumanController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
         pengumuman::create($input);
-
         return redirect(route('pengumuman.index'));
     }
 
@@ -57,7 +52,6 @@ class PengumumanController extends Controller
     public function show($id)
     {
         $pengumuman = pengumuman::find($id);
-
         return view('pengumuman.show', compact('pengumuman'));
     }
 
@@ -70,11 +64,8 @@ class PengumumanController extends Controller
     public function edit($id)
     {
         $pengumuman = pengumuman::find($id);
-
         $kategori_pengumuman = kategori_pengumuman::pluck('nama', 'id');
-        $selected = kategori_pengumuman::pluck('nama', 'id');
-
-        return view('pengumuman.edit', compact('pengumuman', 'kategori_pengumuman', 'selected'));
+        return view('pengumuman.edit', compact('pengumuman', 'kategori_pengumuman'));
     }
 
     /**
@@ -87,8 +78,7 @@ class PengumumanController extends Controller
     public function update(Request $request, $id)
     {
         $edit = $request->all();
-        pengumuman::find($id)->update($edit);
-
+        pengumuman::where('id', $id)->update($edit);
         return redirect(route('pengumuman.index'));
     }
 
@@ -100,8 +90,7 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        pengumuman::find($id)->delete();
-
+        pengumuman::where('id', $id)->delete();
         return redirect(route('pengumuman.index'));
     }
 }
